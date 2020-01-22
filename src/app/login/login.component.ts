@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,FormBuilder,Validators,AbstractControl } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ email:AbstractControl;
 pswd:AbstractControl;
   constructor(
     //private spinner: NgxSpinnerService,
-    //private router:Router,
+    private router:Router,
     private formbuilder:FormBuilder,
     private userService:UserService
   ) {
@@ -32,6 +33,13 @@ pswd: this.loginform.value.pswd
  }
  console.log("my data...",senddata);
  let data =this.userService.login(senddata);
+  if(data == true){
+    this.userService.alertForSuccess("You Have Successfully Logged In","Success");
+    this.router.navigate(['about']);
+  }else{
+    this.userService.alertFordanger("Credentials Not Matching","Warning!");
+    this.router.navigate(['login']);
+  }
 }
 
 }

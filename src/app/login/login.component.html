@@ -1,4 +1,4 @@
-<p style="font-size: xx-large">LOGIN FORM</p>
+<p style="font-size: xx-large">MY LOGIN FORM</p>
 <form [formGroup]="loginform" (ngSubmit)="login()">
     <div>
       <label for="email">Email:</label>
@@ -25,4 +25,6 @@
       </div>
     </div> <br> 
     <button type="submit" class="btn btn-primary">Submit</button>
+    <button routerLink='/register' style="margin-left: 6%;" class="btn btn-primary">SignUp</button>
   </form>
+  
